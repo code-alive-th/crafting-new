@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Outfit, Syncopate } from "next/font/google";
 import localFont from "next/font/local";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import "./works/detail.css";
 
@@ -61,6 +63,8 @@ export default function RootLayout({
       <body
         className={`${outfit.variable} ${syncopate.variable} ${fcMinimal.variable} ${pbio.variable} antialiased`}
       >
+        <SpeedInsights />
+        <Analytics />
         {children}
         {modal}
       </body>

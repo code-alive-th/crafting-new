@@ -86,6 +86,8 @@
 - Available for deployment or further development
 
 ## Current Task Notes
+- Post-deploy verification after `aa85d1e`: live HTML now preloads only PBIO font plus critical images; deployed mobile Lighthouse improved to performance 96, accessibility 100, SEO 100 with FCP 2.2s and LCP 2.2s; PageSpeed API remained variable with desktop 85 and mobile 49, still flagging unused CSS/JS and main-thread work
+- Reduced non-critical font preloads in `src/app/layout.tsx` by setting `preload: false` on Outfit, Syncopate, and FC Minimal while keeping PBIO preloaded for the hero; local production HTML now preloads 1 font instead of 6, and local mobile Lighthouse improved to performance 97, FCP 1.1s, LCP 2.7s
 - Post-deploy verification after `13e6c1b`: Lighthouse on `https://crafting-new.up.railway.app/` reported performance 59, accessibility 96, best-practices 96, SEO 100; PageSpeed reported desktop 65 and mobile 55; deployed CSS still served `footer-col-title{color:var(--gray-mid)}` so the footer contrast fix from latest source was not reflected in the live CSS yet
 - Deferred homepage `gsap` by replacing the top-level import in `src/components/home/Works.tsx` with dynamic `import("gsap")` inside the production-card animation effect; also raised footer column label contrast in `globals.css`; verified with `pnpm run build` and local Lighthouse (`performance 87`, `accessibility 100`, `SEO 100`)
 - Started conservative Hero/LCP pass: added `fetchPriority="high"` to the navbar logo image and hero background image, plus a fixed logo `sizes` hint; verified with `pnpm run build`
@@ -101,3 +103,6 @@
 - Confirmed some logos export cleanly as SVG, but larger ones are truncated in tool output; PNG export is the safer bulk-export path
 - Created `public/assets/works/portfolio/details/clients/` and populated it with 23 client logo files named by work/detail slug where possible
 - Updated `src/components/works/data.ts` so all `WORK_DETAILS.logo` paths now point to `/assets/works/portfolio/details/clients/*`
+- Added a per-card scroll-triggered reveal for `GRAPHIC_DESIGN_ITEMS` in `GraphicDesignSection`, observing each card individually so lower rows do not animate before entering the viewport; verified with `pnpm run build`
+- Compressed all 74 `public/assets/works/portfolio/details/*.webp` images from about 350.6MB to 22.4MB by resizing to max-width 2200px at WebP quality 90; enabled Next/Image AVIF+WebP output and added `sizes` to work detail images; verified with `pnpm run build`
+- Added Vercel Analytics and Speed Insights to the root layout and dependencies; verified with `pnpm run build`
