@@ -1,5 +1,5 @@
 "use client";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, type ReactNode } from "react";
 import FadeIn from "../FadeIn";
 import Image from "next/image";
 
@@ -66,7 +66,11 @@ const projects = [
   },
 ];
 
-export default function Works() {
+type WorksProps = {
+  clientsSlot?: ReactNode;
+};
+
+export default function Works({ clientsSlot }: WorksProps) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [activeProductionIndex, setActiveProductionIndex] = useState(0);
   const [isProductionLoading, setIsProductionLoading] = useState(true);
@@ -231,114 +235,126 @@ export default function Works() {
         </FadeIn>
       </section>
 
-      <section className="production-showcase" id="production-showcase">
-        {/* Background: dark green glow (Figma node 202:7604) */}
-        <div className="production-bg" aria-hidden="true" />
+      <div className="production-clients-visual">
+        <div className="clients-background" aria-hidden="true">
+          <Image
+            src="/assets/athlete-banner.webp"
+            alt=""
+            fill
+            sizes="100vw"
+            className="clients-background-img"
+          />
+        </div>
+        <div className="clients-background-overlay" aria-hidden="true" />
+        <div className="clients-background-glow" aria-hidden="true" />
 
-        <FadeIn direction="left" className="production-left">
-          <div className="production-category">
-            <div className="category-indicator">
-              <div className="category-bar"></div>
-              <span className="category-name">Production</span>
-            </div>
-          </div>
-          <div className="production-info">
-            <h3 className="production-title">Go Green by Kanya</h3>
-            <p className="production-type">Short Video Viral</p>
-          </div>
-          <a href="/works" className="btn-view-more">
-            View More
-          </a>
-        </FadeIn>
-
-        <FadeIn className="production-center">
-          <div ref={productionVideoCardRef} className="production-video-card">
-            <div className="production-video-stage">
-              <div className="production-video-poster" aria-hidden="true">
-                <Image
-                  src={activeProduction.thumbnail}
-                  alt=""
-                  fill
-                  sizes="(max-width: 1024px) 80vw, 440px"
-                  style={{ objectFit: "cover" }}
-                />
+        <section className="production-showcase" id="production-showcase">
+          <FadeIn direction="left" className="production-left">
+            <div className="production-category">
+              <div className="category-indicator">
+                <div className="category-bar"></div>
+                <span className="category-name">Production</span>
               </div>
-              <iframe
-                className={`production-video ${isProductionLoading ? "is-loading" : "is-ready"}`}
-                src={activeProduction.src}
-                title={activeProduction.alt}
-                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                referrerPolicy="strict-origin-when-cross-origin"
-                onLoad={() => setIsProductionLoading(false)}
-              />
             </div>
-          </div>
-        </FadeIn>
+            <div className="production-info">
+              <h3 className="production-title">Go Green by Kanya</h3>
+              <p className="production-type">Short Video Viral</p>
+            </div>
+            <a href="/works" className="btn-view-more">
+              View More
+            </a>
+          </FadeIn>
 
-        <FadeIn direction="right" className="production-right">
-          <svg
-            className="production-curve"
-            width="470"
-            height="769"
-            viewBox="0 0 470 769"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            aria-hidden="true"
-          >
-            <path
-              d="M248.5 1.08203C316.631 1.08203 378.46 43.8128 423.308 113.205C468.148 182.586 495.918 278.501 495.918 384.5C495.918 490.499 468.148 586.414 423.308 655.795C378.46 725.187 316.631 767.918 248.5 767.918C180.369 767.918 118.54 725.187 73.6924 655.795C28.8518 586.414 1.08203 490.499 1.08203 384.5C1.08203 278.501 28.8518 182.586 73.6924 113.205C118.54 43.8128 180.369 1.08203 248.5 1.08203Z"
-              stroke="url(#paint0_linear_113_495)"
-              strokeWidth="2.16404"
-            />
-            <defs>
-              <linearGradient
-                id="paint0_linear_113_495"
-                x1="0"
-                y1="384.5"
-                x2="497"
-                y2="384.5"
-                gradientUnits="userSpaceOnUse"
-              >
-                <stop stopColor="white" />
-                <stop offset="0.168269" stopColor="#999999" stopOpacity="0" />
-              </linearGradient>
-            </defs>
-          </svg>
-          <div className="video-slot-container">
-            {visibleProductionItems.map(({ item, slot, index }) => {
-              const pos = PROD_SLOTS[slot];
-              const isActiveThumbnail = index === activeProductionIndex;
-
-              return (
-                <button
-                  key={item.id}
-                  className={`video-slot-item ${isActiveThumbnail ? "is-active" : ""}`}
-                  type="button"
-                  aria-label={`Show production video ${index + 1}`}
-                  aria-pressed={isActiveThumbnail}
-                  onClick={() => handleProductionChange(index)}
-                  style={{
-                    right: pos.right,
-                    top: pos.top,
-                    width: pos.width,
-                    height: pos.height,
-                    zIndex: pos.z,
-                  }}
-                >
+          <FadeIn className="production-center">
+            <div ref={productionVideoCardRef} className="production-video-card">
+              <div className="production-video-stage">
+                <div className="production-video-poster" aria-hidden="true">
                   <Image
-                    src={item.thumbnail}
-                    alt={item.alt}
+                    src={activeProduction.thumbnail}
+                    alt=""
                     fill
-                    sizes="(max-width: 1024px) 40vw, 250px"
+                    sizes="(max-width: 1024px) 80vw, 440px"
                     style={{ objectFit: "cover" }}
                   />
-                </button>
-              );
-            })}
-          </div>
-        </FadeIn>
-      </section>
+                </div>
+                <iframe
+                  className={`production-video ${isProductionLoading ? "is-loading" : "is-ready"}`}
+                  src={activeProduction.src}
+                  title={activeProduction.alt}
+                  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  onLoad={() => setIsProductionLoading(false)}
+                />
+              </div>
+            </div>
+          </FadeIn>
+
+          <FadeIn direction="right" className="production-right">
+            <svg
+              className="production-curve"
+              width="470"
+              height="769"
+              viewBox="0 0 470 769"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
+            >
+              <path
+                d="M248.5 1.08203C316.631 1.08203 378.46 43.8128 423.308 113.205C468.148 182.586 495.918 278.501 495.918 384.5C495.918 490.499 468.148 586.414 423.308 655.795C378.46 725.187 316.631 767.918 248.5 767.918C180.369 767.918 118.54 725.187 73.6924 655.795C28.8518 586.414 1.08203 490.499 1.08203 384.5C1.08203 278.501 28.8518 182.586 73.6924 113.205C118.54 43.8128 180.369 1.08203 248.5 1.08203Z"
+                stroke="url(#paint0_linear_113_495)"
+                strokeWidth="2.16404"
+              />
+              <defs>
+                <linearGradient
+                  id="paint0_linear_113_495"
+                  x1="0"
+                  y1="384.5"
+                  x2="497"
+                  y2="384.5"
+                  gradientUnits="userSpaceOnUse"
+                >
+                  <stop stopColor="white" />
+                  <stop offset="0.168269" stopColor="#999999" stopOpacity="0" />
+                </linearGradient>
+              </defs>
+            </svg>
+            <div className="video-slot-container">
+              {visibleProductionItems.map(({ item, slot, index }) => {
+                const pos = PROD_SLOTS[slot];
+                const isActiveThumbnail = index === activeProductionIndex;
+
+                return (
+                  <button
+                    key={item.id}
+                    className={`video-slot-item ${isActiveThumbnail ? "is-active" : ""}`}
+                    type="button"
+                    aria-label={`Show production video ${index + 1}`}
+                    aria-pressed={isActiveThumbnail}
+                    onClick={() => handleProductionChange(index)}
+                    style={{
+                      right: pos.right,
+                      top: pos.top,
+                      width: pos.width,
+                      height: pos.height,
+                      zIndex: pos.z,
+                    }}
+                  >
+                    <Image
+                      src={item.thumbnail}
+                      alt={item.alt}
+                      fill
+                      sizes="(max-width: 1024px) 40vw, 250px"
+                      style={{ objectFit: "cover" }}
+                    />
+                  </button>
+                );
+              })}
+            </div>
+          </FadeIn>
+        </section>
+        {clientsSlot}
+      </div>
     </>
   );
 }

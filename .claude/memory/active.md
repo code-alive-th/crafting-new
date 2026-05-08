@@ -106,3 +106,7 @@
 - Added a per-card scroll-triggered reveal for `GRAPHIC_DESIGN_ITEMS` in `GraphicDesignSection`, observing each card individually so lower rows do not animate before entering the viewport; verified with `pnpm run build`
 - Compressed all 74 `public/assets/works/portfolio/details/*.webp` images from about 350.6MB to 22.4MB by resizing to max-width 2200px at WebP quality 90; enabled Next/Image AVIF+WebP output and added `sizes` to work detail images; verified with `pnpm run build`
 - Added Vercel Analytics and Speed Insights to the root layout and dependencies; verified with `pnpm run build`
+- Replaced the Services production hero asset reference with `/assets/services/service-production.webp`, re-encoded the WebP, removed the unused PNG, and verified with `pnpm run build`
+- Converted the new `public/assets/services/service-production.jpg` source into optimized `service-production.webp` (1534px wide), removed the temporary JPG, and verified with `pnpm run build`
+- Reworked the home `Clients` section into a visual overlay section using `public/assets/athlete-banner1.webp`, removed the separate `SportsBanner` render/component/CSS, kept the existing 2-row logo marquee sizing, and verified with `pnpm run build` plus desktop/mobile Playwright screenshots.
+- Extended the `athlete-banner1.webp` visual background to wrap both `production-showcase` and `Clients` via `production-clients-visual`, placing production above and clients below on one full-height background; verified with `pnpm run build` and desktop/mobile Playwright screenshots.

@@ -37,7 +37,7 @@ src/
 ## 🎨 Design System
 **Colors:**
 - Primary Green: `#00FF00` (neon accent)
-- Background: `#1a1a1a` (dark)
+- Background: `#1e1e1e` (dark)
 - Text: `#ffffff` (white)
 - Secondary Gray: `#a6a6a6`, `#6d6e70`
 

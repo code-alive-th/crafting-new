@@ -23,7 +23,7 @@
 ## Design System
 ```css
 --green: #00FF00;        /* Primary accent */
---black: #1a1a1a;        /* Background */
+--black: #1e1e1e;        /* Background */
 --white: #ffffff;        /* Text */
 --gray-light: #a6a6a6;  /* Secondary */
 --gray-mid: #6d6e70;    /* Tertiary */

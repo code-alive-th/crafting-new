@@ -156,7 +156,7 @@ export const SERVICES: ServiceData[] = [
     subCards: [
       {
         photo: {
-          src: "/assets/services/service-production.png",
+          src: "/assets/services/service-production.webp",
           alt: "Production & Video",
           width: 749,
           height: 500,

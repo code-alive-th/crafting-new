@@ -15,7 +15,7 @@
 ### Colors
 ```css
 --green: #00FF00;        /* Neon accent - used for highlights, CTA, active states */
---black: #1a1a1a;        /* Primary background */
+--black: #1e1e1e;        /* Primary background */
 --white: #ffffff;        /* Primary text */
 --gray-light: #a6a6a6;  /* Secondary text, muted elements */
 --gray-mid: #6d6e70;    /* Tertiary, dividers */

@@ -49,6 +49,7 @@ export default function ServiceBlock({ svc, index }: ServiceBlockProps) {
               width={svc.photo.width}
               height={svc.photo.height}
               priority={index === 0}
+              loading="eager"
               style={{ width: "100%", height: "auto", display: "block" }}
             />
           </div>

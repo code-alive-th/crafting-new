@@ -31,7 +31,7 @@ src/
 ```
 Colors:
   --green:      #00FF00   ← neon accent (highlights, active states, CTA)
-  --black:      #1a1a1a   ← background
+  --black:      #1e1e1e   ← background
   --white:      #ffffff   ← primary text
   --gray-light: #a6a6a6
   --gray-mid:   #6d6e70

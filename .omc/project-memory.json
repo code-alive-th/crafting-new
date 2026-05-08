@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "lastScanned": 1777276692688,
+  "lastScanned": 1778142033099,
   "projectRoot": "/Users/rotoon/Git/crafting-new",
   "techStack": {
     "languages": [
@@ -79,14 +79,14 @@
       "path": "docs",
       "purpose": "Documentation",
       "fileCount": 0,
-      "lastAccessed": 1777276692666,
+      "lastAccessed": 1778142033074,
       "keyFiles": []
     },
     "public": {
       "path": "public",
       "purpose": "Public files",
       "fileCount": 6,
-      "lastAccessed": 1777276692668,
+      "lastAccessed": 1778142033081,
       "keyFiles": [
         "file.svg",
         "globe.svg",
@@ -99,21 +99,21 @@
       "path": "scripts",
       "purpose": "Build/utility scripts",
       "fileCount": 0,
-      "lastAccessed": 1777276692674,
+      "lastAccessed": 1778142033082,
       "keyFiles": []
     },
     "src": {
       "path": "src",
       "purpose": "Source code",
       "fileCount": 0,
-      "lastAccessed": 1777276692675,
+      "lastAccessed": 1778142033083,
       "keyFiles": []
     },
     "public/assets": {
       "path": "public/assets",
       "purpose": "Static assets",
       "fileCount": 5,
-      "lastAccessed": 1777276692675,
+      "lastAccessed": 1778142033084,
       "keyFiles": [
         "athlete-banner.webp",
         "crew-bg.webp",
@@ -124,7 +124,7 @@
       "path": "src/app",
       "purpose": "Application code",
       "fileCount": 4,
-      "lastAccessed": 1777276692676,
+      "lastAccessed": 1778142033084,
       "keyFiles": [
         "globals.css",
         "icon.svg",
@@ -135,7 +135,7 @@
       "path": "src/components",
       "purpose": "UI components",
       "fileCount": 4,
-      "lastAccessed": 1777276692676,
+      "lastAccessed": 1778142033084,
       "keyFiles": [
         "BackToTop.tsx",
         "FadeIn.tsx",

@@ -5,7 +5,6 @@ import About from "@/components/home/About";
 import PhotoCarousel from "@/components/home/PhotoCarousel";
 import Services from "@/components/home/Services";
 import Works from "@/components/home/Works";
-import SportsBanner from "@/components/home/SportsBanner";
 import Clients from "@/components/home/Clients";
 import Footer from "@/components/Footer";
 
@@ -19,9 +18,7 @@ export default function Home() {
         <About />
         <PhotoCarousel />
         <Services />
-        <Works />
-        <SportsBanner />
-        <Clients />
+        <Works clientsSlot={<Clients />} />
       </main>
       <Footer />
     </>
