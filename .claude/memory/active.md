@@ -86,6 +86,9 @@
 - Available for deployment or further development
 
 ## Current Task Notes
+- Added LINE Seed Sans TH as a local Thai font with web assets from `/Users/rotoon/Downloads/LINE_Seed_Sans_TH`; registered via `next/font/local` in `src/app/layout.tsx` and added `--font-line-seed-th` as a dedicated Thai stack variable.
+- Shifted typography handling to `:lang(th)` only: default heading/body remain `Century Gothic` (no change to English), and Thai-only content now switches to `--font-line-seed-th` through explicit `lang="th"` usage where Thai strings are rendered (`ServiceBlock`, `Works`, `WorkDetailPage`).
+- In Footer success banner, `YOUR SUCCESS` and `OUR SUCCESS` were not animating because they were not wrapped with `FadeIn`; fixed by applying `FadeIn` (left/right) around both texts in `src/components/Footer.tsx` with delayed transitions.
 - Post-deploy verification after `aa85d1e`: live HTML now preloads only PBIO font plus critical images; deployed mobile Lighthouse improved to performance 96, accessibility 100, SEO 100 with FCP 2.2s and LCP 2.2s; PageSpeed API remained variable with desktop 85 and mobile 49, still flagging unused CSS/JS and main-thread work
 - Reduced non-critical font preloads in `src/app/layout.tsx` by setting `preload: false` on Outfit, Syncopate, and FC Minimal while keeping PBIO preloaded for the hero; local production HTML now preloads 1 font instead of 6, and local mobile Lighthouse improved to performance 97, FCP 1.1s, LCP 2.7s
 - Post-deploy verification after `13e6c1b`: Lighthouse on `https://crafting-new.up.railway.app/` reported performance 59, accessibility 96, best-practices 96, SEO 100; PageSpeed reported desktop 65 and mobile 55; deployed CSS still served `footer-col-title{color:var(--gray-mid)}` so the footer contrast fix from latest source was not reflected in the live CSS yet
@@ -110,3 +113,5 @@
 - Converted the new `public/assets/services/service-production.jpg` source into optimized `service-production.webp` (1534px wide), removed the temporary JPG, and verified with `pnpm run build`
 - Reworked the home `Clients` section into a visual overlay section using `public/assets/athlete-banner1.webp`, removed the separate `SportsBanner` render/component/CSS, kept the existing 2-row logo marquee sizing, and verified with `pnpm run build` plus desktop/mobile Playwright screenshots.
 - Extended the `athlete-banner1.webp` visual background to wrap both `production-showcase` and `Clients` via `production-clients-visual`, placing production above and clients below on one full-height background; verified with `pnpm run build` and desktop/mobile Playwright screenshots.
+- Added `loading="eager"` and `fetchPriority="high"` to the active production YouTube poster image in `src/components/home/Works.tsx` to address the LCP warning for `UPqGsHt7fkA/maxresdefault.jpg`.
+- Re-encoded `public/assets/athlete-banner.webp` from the oversized `6000x14229` source down to `2400x5692` at WebP quality 82, keeping the same path so CSS layout height remains unchanged while reducing the background payload.

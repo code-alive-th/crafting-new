@@ -16,7 +16,7 @@ const buildPlayableSrc = (src: string) => {
 };
 
 export default function VideoProductionSection() {
-  const [videoCat, setVideoCat] = useState("");
+  const [videoCat, setVideoCat] = useState(VIDEO_CATEGORIES[0]);
   const [pageIndex, setPageIndex] = useState(0);
   const [loadedVideoMap, setLoadedVideoMap] = useState<Record<string, boolean>>(
     {},
@@ -68,33 +68,23 @@ export default function VideoProductionSection() {
               <span className="wk-label-text">VIDEO PRODUCTION</span>
             </div>
           </FadeIn>
-
-          <FadeIn direction="up" delayMs={100}>
-            <div className="wk-vp-tabs">
+        </div>
+        <FadeIn direction="up" delayMs={100}>
+          <div className="wk-vp-tabs">
+            {VIDEO_CATEGORIES.map((cat) => (
               <button
-                className={`wk-vp-tab ${videoCat === "" ? "wk-vp-tab--active" : ""}`}
+                key={cat}
+                className={`wk-vp-tab ${videoCat === cat ? "wk-vp-tab--active" : ""}`}
                 onClick={() => {
-                  setVideoCat("");
+                  setVideoCat(cat);
                 }}
                 type="button"
               >
-                All
+                {cat}
               </button>
-              {VIDEO_CATEGORIES.map((cat) => (
-                <button
-                  key={cat}
-                  className={`wk-vp-tab ${videoCat === cat ? "wk-vp-tab--active" : ""}`}
-                  onClick={() => {
-                    setVideoCat(cat);
-                  }}
-                  type="button"
-                >
-                  {cat}
-                </button>
-              ))}
-            </div>
-          </FadeIn>
-        </div>
+            ))}
+          </div>
+        </FadeIn>
       </div>
 
       <div className="wk-vp-stage">

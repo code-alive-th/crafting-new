@@ -141,10 +141,12 @@ export const GRAPHIC_DESIGN_ITEMS = [
 
 export const VIDEO_CATEGORIES = [
   "Craft Heart",
-  "Real Estate",
   "Restaurant",
-  "Food",
-  "Bar&Cafe",
+  "Bar & Cafe",
+  "Product",
+  "Food & Drink",
+  "Real Estate",
+  "Others",
 ];
 
 export type VideoItem = {
@@ -168,27 +170,293 @@ const createYouTubeShort = (
 });
 
 export const PRODUCTION_VIDEOS: VideoItem[] = [
+  createYouTubeShort("aaqykWnnUzE", "Craft Heart", "Craft Heart - Nomberone"),
   createYouTubeShort(
-    "UPqGsHt7fkA",
-    "Real Estate",
-    "Real Estate video production showcase",
+    "v0dSE-HCa3I",
+    "Craft Heart",
+    "Craft Heart - 10 ปีกาดต่อนยอน PR งานหนัว ชุมชนโหล่งฮิมคาว",
+  ),
+  createYouTubeShort("Syv3nH1TcDw", "Craft Heart", "Craft Heart - Zapaspace"),
+  createYouTubeShort(
+    "sUA8gUuseIc",
+    "Craft Heart",
+    "Craft Heart - Secrets of Noodle",
   ),
   createYouTubeShort(
-    "aaqykWnnUzE",
+    "gXnqYoeFdV4",
+    "Craft Heart",
+    "Craft Heart - Under Over Cafe",
+  ),
+  createYouTubeShort(
+    "tgVMUphtvew",
+    "Craft Heart",
+    "Craft Heart - Under Over Brunch",
+  ),
+  createYouTubeShort(
+    "Qblpfjh0rA8",
+    "Craft Heart",
+    "Craft Heart - Kate & Kim Coffee",
+  ),
+  createYouTubeShort(
+    "-FOdlCswN_k",
+    "Craft Heart",
+    "Craft Heart - Santoku Curry Rice",
+  ),
+  createYouTubeShort(
+    "YAYoYcQSIZ0",
+    "Craft Heart",
+    "Craft Heart - Aladdin Studio",
+  ),
+  createYouTubeShort("ffbWNpBURsA", "Craft Heart", "Craft Heart - Playworks"),
+  createYouTubeShort("5eJc79sGnWQ", "Craft Heart", "Craft Heart - Home's Cafe"),
+  createYouTubeShort(
+    "2PW79EQ7YSc",
+    "Craft Heart",
+    "Craft Heart - Green Warrior",
+  ),
+  createYouTubeShort(
+    "ywawEIdiE5M",
+    "Craft Heart",
+    "Craft Heart - Skugga Estate",
+  ),
+  createYouTubeShort(
+    "r7wrcWsu1ds",
+    "Craft Heart",
+    "Craft Heart - Street Coffee Crew",
+  ),
+  createYouTubeShort(
+    "EgnoPl0W7vs",
+    "Craft Heart",
+    "Craft Heart - Somtum Classic",
+  ),
+  createYouTubeShort(
+    "oeI9isQSFOU",
     "Restaurant",
-    "Restaurant video production showcase",
-  ),
-  createYouTubeShort("Sldg55p42jU", "Food", "Food video production showcase"),
-  createYouTubeShort(
-    "HVRnOXuqMYI",
-    "Clinic",
-    "Clinic video production showcase",
+    "SOMM Wine & Dine - Wine Tap Wine O'Clock",
   ),
   createYouTubeShort(
-    "XAQn98HVJw4",
-    "Bar&Cafe",
-    "Bar and cafe video production showcase",
+    "fkTAyu9WSOk",
+    "Restaurant",
+    "SOMM Wine & Dine - White Wine Showcase",
   ),
+  createYouTubeShort(
+    "_YvdRjOpo_o",
+    "Restaurant",
+    "Blanc - Meet the Chef & Team",
+  ),
+  createYouTubeShort("QAAQWYjx48E", "Restaurant", "Blanc - Blanc Trio Band"),
+  createYouTubeShort(
+    "DkFvQVaUyUg",
+    "Restaurant",
+    "Blanc - Blanc Moment Special Occasion",
+  ),
+  createYouTubeShort("fKSo9-e11w4", "Restaurant", "Blanc - Blanc with Friends"),
+  createYouTubeShort(
+    "3yKZ69u6pOk",
+    "Restaurant",
+    "WSN - Time Machine 2026 EVENT Highlight",
+  ),
+  createYouTubeShort(
+    "W5rbWEoIi1M",
+    "Restaurant",
+    "WSN - ไวน์ & แชมเปญ Showcase 2",
+  ),
+  createYouTubeShort(
+    "kiC6fmRpohc",
+    "Restaurant",
+    "WSN - WISET Masterchef Showcase",
+  ),
+  createYouTubeShort(
+    "-dtgTv5oWUI",
+    "Restaurant",
+    "WSN - Birthday EVENT Highlight 1",
+  ),
+  createYouTubeShort(
+    "INJsRi81caM",
+    "Restaurant",
+    "WSN - Halloween Party 2025 VDO Promote",
+  ),
+  createYouTubeShort(
+    "FnjhV4WdzQE",
+    "Restaurant",
+    "WSN - Halloween Party 2025 EVENT Highlight",
+  ),
+  createYouTubeShort(
+    "NkuOEzN9pbw",
+    "Restaurant",
+    "WSN - 90s Bakery Love Song EVENT Highlight",
+  ),
+  createYouTubeShort(
+    "nAAmg3hpgSQ",
+    "Restaurant",
+    "SOMM Wine & Dine - Toast the Sunset",
+  ),
+  createYouTubeShort(
+    "rUEDM_jYbhw",
+    "Restaurant",
+    "WSN - Halloween Party 2025 Cocktails Showcase",
+  ),
+  createYouTubeShort(
+    "R8NupZsOIN0",
+    "Bar & Cafe",
+    "GoGreen Cafe - อาหารและเครื่องดื่มที่โกกรีนคาเฟ่",
+  ),
+  createYouTubeShort(
+    "QhtWL7F9dLY",
+    "Bar & Cafe",
+    "GoGreen Bar - Cocktail Tempo Cut Short",
+  ),
+  createYouTubeShort(
+    "u9pNQLvKVls",
+    "Bar & Cafe",
+    "GoGreen - Songkran Drinks 2024",
+  ),
+  createYouTubeShort(
+    "QEgZQRTqWck",
+    "Bar & Cafe",
+    "GoGreen Cafe - Hostel, Coffee and Food",
+  ),
+  createYouTubeShort(
+    "zhDyfdIDS8M",
+    "Bar & Cafe",
+    "GoGreen Cafe - Barista Daily",
+  ),
+  createYouTubeShort(
+    "vBmASydaopU",
+    "Bar & Cafe",
+    "GoGreen Bar - Be Mine Valentine PROMO",
+  ),
+  createYouTubeShort(
+    "btlUqQPEiaU",
+    "Bar & Cafe",
+    "Green Warrior - Morning Drinks at GW",
+  ),
+  createYouTubeShort(
+    "VywkqoNNoRI",
+    "Bar & Cafe",
+    "GW x NINJA - NINJA Slushi REVIEW",
+  ),
+  createYouTubeShort(
+    "WiFIMI-EdIk",
+    "Bar & Cafe",
+    "McARTHUR Bloc - Grand Opening",
+  ),
+  createYouTubeShort(
+    "gQ0nahpcYPg",
+    "Bar & Cafe",
+    "McARTHUR Bloc - Grand Opening '3DBand'",
+  ),
+  createYouTubeShort(
+    "ZMtBTHLLekA",
+    "Bar & Cafe",
+    "McARTHUR Bloc - Grand Opening 'The DJs'",
+  ),
+  createYouTubeShort("9zSjrXn8DlY", "Product", "GoGreen - GG T-Shirt Showcase"),
+  createYouTubeShort(
+    "btlUqQPEiaU",
+    "Product",
+    "Green Warrior - Morning Drinks at GW",
+  ),
+  createYouTubeShort("2Wu2lRVJl8g", "Product", "GSL - La fleu REVIEW"),
+  createYouTubeShort("gkaYrrNgCTU", "Product", "GSL - Bathbomb REVIEW"),
+  createYouTubeShort(
+    "h73_nAZ69Gg",
+    "Food & Drink",
+    "โกแมวต้มข้าว GOMEAW - สัมภาษณ์โกแมว",
+  ),
+  createYouTubeShort(
+    "9Bm_O9WKzws",
+    "Food & Drink",
+    "Central - Mandarin Orchid Tea",
+  ),
+  createYouTubeShort(
+    "R8NupZsOIN0",
+    "Food & Drink",
+    "GoGreen Cafe - อาหารและเครื่องดื่มที่โกกรีนคาเฟ่",
+  ),
+  createYouTubeShort(
+    "QhtWL7F9dLY",
+    "Food & Drink",
+    "GoGreen Bar - Cocktail Tempo Cut Short",
+  ),
+  createYouTubeShort(
+    "u9pNQLvKVls",
+    "Food & Drink",
+    "GoGreen - Songkran Drinks 2024",
+  ),
+  createYouTubeShort(
+    "QEgZQRTqWck",
+    "Food & Drink",
+    "GoGreen Cafe - Hostel, Coffee and Food",
+  ),
+  createYouTubeShort(
+    "zhDyfdIDS8M",
+    "Food & Drink",
+    "GoGreen Cafe - Barista Daily",
+  ),
+  createYouTubeShort(
+    "vBmASydaopU",
+    "Food & Drink",
+    "GoGreen Bar - Be Mine Valentine PROMO",
+  ),
+  createYouTubeShort(
+    "btlUqQPEiaU",
+    "Food & Drink",
+    "Green Warrior - Morning Drinks at GW",
+  ),
+  createYouTubeShort(
+    "adNBdvGQGaE",
+    "Real Estate",
+    "The Vinzen Phase 1 - Couple Daily Part 2",
+  ),
+  createYouTubeShort(
+    "vusl2ww1Nzc",
+    "Real Estate",
+    "The Vinzen - Central CNX Route",
+  ),
+  createYouTubeShort("09V9iD5_cSo", "Real Estate", "The Vinzen - Maejo Route"),
+  createYouTubeShort("D_iRi18upzI", "Real Estate", "Diwalai - บ้านนอกโครงการ"),
+  createYouTubeShort(
+    "r5avoOQe9fI",
+    "Real Estate",
+    "The Vinzen Phase 2 - Living Room Showcase",
+  ),
+  createYouTubeShort(
+    "z8EjOtE7hHU",
+    "Real Estate",
+    "The Vinzen Phase 2 - Kitchen Showcase",
+  ),
+  createYouTubeShort(
+    "BxUC3E1N7Oo",
+    "Real Estate",
+    "The Vinzen Phase 2 - Bedroom Showcase",
+  ),
+  createYouTubeShort(
+    "i6k0UBq1hRE",
+    "Real Estate",
+    "The Vinzen Phase 2 Ai Decorate",
+  ),
+  createYouTubeShort(
+    "a7hRz6pBLHc",
+    "Real Estate",
+    "The Vinzen Phase 2 - Showcase VLOG",
+  ),
+  createYouTubeShort(
+    "oeXPVIHEp44",
+    "Real Estate",
+    "The Vinzen Phase 2 - Showcase & Promo",
+  ),
+  createYouTubeShort(
+    "QEgZQRTqWck",
+    "Real Estate",
+    "GoGreen Cafe - Hostel, Coffee and Food",
+  ),
+  createYouTubeShort(
+    "HPPNfXqAe2I",
+    "Others",
+    "Cockpit Bcom Service ⎪Crafting Lab Chiangmai รับถ่ายวิดีโอและตัดต่อร้านอาหารเชียงใหม่",
+  ),
+  createYouTubeShort("ePrZG0TPI-Q", "Others", "NAT Motor - VDO PRESENT"),
 ];
 
 export const PHOTO_CATEGORIES = ["Packshot", "Styling", "Vibe", "Advertising"];

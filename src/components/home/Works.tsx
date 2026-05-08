@@ -285,6 +285,8 @@ export default function Works({ clientsSlot }: WorksProps) {
                     src={activeProduction.thumbnail}
                     alt=""
                     fill
+                    loading="eager"
+                    fetchPriority="high"
                     sizes="(max-width: 1024px) 80vw, 440px"
                     style={{ objectFit: "cover" }}
                   />

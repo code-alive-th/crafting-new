@@ -983,6 +983,7 @@ footer[id] {
     letter-spacing: clamp(1px, 0.3vw, 3px);
     text-transform: uppercase;
     color: var(--green);
+    white-space: nowrap;
 }
 
 /* 3-card portrait row */
@@ -1404,6 +1405,9 @@ footer[id] {
     align-items: center;
     gap: 0;
     margin: 0; /* Removed fixed margins to align in header-row */
+    @media (min-width: 1024px) {
+        justify-content: center;
+    }
 }
 
 .wk-vp-tab {
@@ -1418,6 +1422,7 @@ footer[id] {
     cursor: pointer;
     transition: color 0.2s ease;
     white-space: nowrap;
+    flex: 1;
 }
 
 .wk-vp-tab:last-child {
