@@ -117,3 +117,5 @@
 - Re-encoded `public/assets/athlete-banner.webp` from the oversized `6000x14229` source down to `2400x5692` at WebP quality 82, keeping the same path so CSS layout height remains unchanged while reducing the background payload.
 - Updated home `Works` carousel info so the Thai carousel description is marked with `lang="th"` and `.carousel-info :lang(th)` uses the LINE Seed Sans TH font variable.
 - Added `loading="eager"` and `fetchPriority="high"` to the `/assets/athlete-banner.webp` background `Image` in `src/components/home/Works.tsx` after Lighthouse detected it as LCP.
+- Made services subcard top labels such as `RESEARCH`, `CONSULTING`, and `FINAL KPI` bold by matching `.sp-subcard-title-top` to the bottom label font weight.
+- Replaced FC Minimal usage with LINE Seed Sans TH: removed the FC Minimal font registration/class from `src/app/layout.tsx`, mapped `--font-fc-minimal` to `--font-line-seed-th` for compatibility, and updated services subcard line text to use LINE directly.

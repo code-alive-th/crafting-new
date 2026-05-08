@@ -22,9 +22,9 @@
     --white: #ffffff;
     --font-heading: "Century Gothic", sans-serif;
     --font-body: "Century Gothic", sans-serif;
-    /* --font-body: var(--font-dm-sans), "Century Gothic", var(--font-fc-minimal), sans-serif; */
+    /* --font-body: var(--font-dm-sans), "Century Gothic", var(--font-line-seed-th), sans-serif; */
     --font-syncopate: var(--font-syncopate);
-    --font-fc-minimal: var(--font-fc-minimal);
+    --font-fc-minimal: var(--font-line-seed-th);
     --max-width: 1440px;
 
     /* Type scale */

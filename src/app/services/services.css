@@ -352,7 +352,7 @@
 .sp-subcard-title-top {
   font-family: var(--font-syncopate);
   font-size: clamp(18px, 5vw, 24px);
-  font-weight: 400;
+  font-weight: 700;
   color: var(--white);
   text-transform: uppercase;
 }
@@ -373,7 +373,7 @@
   line-height: 1.5;
   color: var(--white);
   font-weight: 400;
-  font-family: var(--font-fc-minimal), 'Century Gothic', sans-serif;
+  font-family: var(--font-line-seed-th), "Century Gothic", sans-serif;
 }
 
 /* Tags */

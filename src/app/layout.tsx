@@ -20,23 +20,6 @@ const syncopate = Syncopate({
   preload: false,
 });
 
-const fcMinimal = localFont({
-  src: [
-    {
-      path: "../../public/fonts/FC-Minimal/FC Minimal Regular.ttf",
-      weight: "400",
-      style: "normal",
-    },
-    {
-      path: "../../public/fonts/FC-Minimal/FC Minimal Bold.ttf",
-      weight: "700",
-      style: "normal",
-    },
-  ],
-  variable: "--font-fc-minimal",
-  preload: false,
-});
-
 const lineSeedSansTH = localFont({
   src: [
     {
@@ -88,7 +71,7 @@ export default function RootLayout({
   return (
     <html lang="en" data-scroll-behavior="smooth" suppressHydrationWarning>
       <body
-        className={`${outfit.variable} ${syncopate.variable} ${fcMinimal.variable} ${lineSeedSansTH.variable} ${pbio.variable} antialiased`}
+        className={`${outfit.variable} ${syncopate.variable} ${lineSeedSansTH.variable} ${pbio.variable} antialiased`}
       >
         <SpeedInsights />
         <Analytics />
