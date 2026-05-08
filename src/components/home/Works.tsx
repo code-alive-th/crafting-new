@@ -14,34 +14,44 @@ const PROD_SLOTS = [
 
 const PRODUCTION_ITEMS = [
   {
-    id: "video-1",
+    id: "cockpit-b-com",
+    title: "Cockpit B Com Service",
+    type: "Short Video Ads",
     src: "https://www.youtube.com/embed/UPqGsHt7fkA",
     thumbnail: "https://img.youtube.com/vi/UPqGsHt7fkA/maxresdefault.jpg",
-    alt: "Crafting Lab Works 1",
+    alt: "Cockpit B Com Service — Short Video Ad",
   },
   {
-    id: "video-2",
-    src: "https://www.youtube.com/embed/aaqykWnnUzE",
-    thumbnail: "https://img.youtube.com/vi/aaqykWnnUzE/maxresdefault.jpg",
-    alt: "Crafting Lab Works 2",
-  },
-  {
-    id: "video-3",
-    src: "https://www.youtube.com/embed/Sldg55p42jU",
-    thumbnail: "https://img.youtube.com/vi/Sldg55p42jU/maxresdefault.jpg",
-    alt: "Crafting Lab Works 3",
-  },
-  {
-    id: "video-4",
-    src: "https://www.youtube.com/embed/HVRnOXuqMYI",
-    thumbnail: "https://img.youtube.com/vi/HVRnOXuqMYI/maxresdefault.jpg",
-    alt: "Crafting Lab Works 4",
-  },
-  {
-    id: "video-5",
+    id: "blanc-chiang-mai",
+    title: "Blanc Chiang Mai",
+    type: "Short Video Ads",
     src: "https://www.youtube.com/embed/XAQn98HVJw4",
     thumbnail: "https://img.youtube.com/vi/XAQn98HVJw4/maxresdefault.jpg",
-    alt: "Crafting Lab Works 5",
+    alt: "Blanc Chiang Mai — Short Video Ad",
+  },
+  {
+    id: "wisetniyom",
+    title: "Wisetniyom",
+    type: "Short Video",
+    src: "https://www.youtube.com/embed/HVRnOXuqMYI",
+    thumbnail: "https://img.youtube.com/vi/HVRnOXuqMYI/maxresdefault.jpg",
+    alt: "Wisetniyom — Short Video",
+  },
+  {
+    id: "mcarthur-bloc",
+    title: "McARTHUR Bloc",
+    type: "Short Video",
+    src: "https://www.youtube.com/embed/Sldg55p42jU",
+    thumbnail: "https://img.youtube.com/vi/Sldg55p42jU/maxresdefault.jpg",
+    alt: "McARTHUR Bloc — Short Video",
+  },
+  {
+    id: "craft-heart",
+    title: "Craft Heart",
+    type: "Short Video Review",
+    src: "https://www.youtube.com/embed/aaqykWnnUzE",
+    thumbnail: "https://img.youtube.com/vi/aaqykWnnUzE/maxresdefault.jpg",
+    alt: "Craft Heart — Short Video Review",
   },
 ];
 
@@ -257,12 +267,14 @@ export default function Works({ clientsSlot }: WorksProps) {
               </div>
             </div>
             <div className="production-info">
-              <h3 className="production-title">Go Green by Kanya</h3>
-              <p className="production-type">Short Video Viral</p>
+              <h3 className="production-title">{activeProduction.title}</h3>
+              <p className="production-type">{activeProduction.type}</p>
             </div>
-            <a href="/works" className="btn-view-more">
-              View More
-            </a>
+            <div>
+              <a href="/works" className="btn-view-more">
+                View More
+              </a>
+            </div>
           </FadeIn>
 
           <FadeIn className="production-center">
