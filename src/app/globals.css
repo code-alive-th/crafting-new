@@ -1925,6 +1925,10 @@ footer[id] {
     color: var(--gray-mid);
 }
 
+.carousel-info :lang(th) {
+    font-family: var(--font-line-seed-th), var(--font-body);
+}
+
 .carousel-counter {
     display: flex;
     flex-direction: column;

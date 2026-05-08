@@ -225,7 +225,9 @@ export default function Works({ clientsSlot }: WorksProps) {
           <div className="carousel-info" key={active.id}>
             <div className="carousel-info-left">
               <h3 className="carousel-title">{active.title}</h3>
-              <p className="carousel-description">{active.desc}</p>
+              <p className="carousel-description" lang="th">
+                {active.desc}
+              </p>
             </div>
             <div className="carousel-counter">
               <div>
@@ -251,6 +253,8 @@ export default function Works({ clientsSlot }: WorksProps) {
             src="/assets/athlete-banner.webp"
             alt=""
             fill
+            loading="eager"
+            fetchPriority="high"
             sizes="100vw"
             className="clients-background-img"
           />

@@ -115,3 +115,5 @@
 - Extended the `athlete-banner1.webp` visual background to wrap both `production-showcase` and `Clients` via `production-clients-visual`, placing production above and clients below on one full-height background; verified with `pnpm run build` and desktop/mobile Playwright screenshots.
 - Added `loading="eager"` and `fetchPriority="high"` to the active production YouTube poster image in `src/components/home/Works.tsx` to address the LCP warning for `UPqGsHt7fkA/maxresdefault.jpg`.
 - Re-encoded `public/assets/athlete-banner.webp` from the oversized `6000x14229` source down to `2400x5692` at WebP quality 82, keeping the same path so CSS layout height remains unchanged while reducing the background payload.
+- Updated home `Works` carousel info so the Thai carousel description is marked with `lang="th"` and `.carousel-info :lang(th)` uses the LINE Seed Sans TH font variable.
+- Added `loading="eager"` and `fetchPriority="high"` to the `/assets/athlete-banner.webp` background `Image` in `src/components/home/Works.tsx` after Lighthouse detected it as LCP.
