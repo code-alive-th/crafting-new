@@ -1,3 +1,9 @@
+/* ----- WORKS ROUTE FONT SCOPE ----- */
+.works-route {
+  --font-heading: "Century Gothic", var(--font-line-seed-th), sans-serif;
+  --font-body: "Century Gothic", var(--font-line-seed-th), sans-serif;
+}
+
 /* ----- WORK DETAIL PAGE (.wd-*) ----- */
 .wd-section {
   position: relative;

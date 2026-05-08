@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import FadeIn from "./FadeIn";
 
 function SuccessDots() {
   return <div className="success-dots"></div>;
@@ -12,10 +13,14 @@ export default function Footer() {
         <SuccessDots />
         <div className="success-text-row">
           <div className="your-success-row">
-            <span className="success-text">YOUR SUCCESS</span>
+            <FadeIn direction="left" delayMs={100}>
+              <span className="success-text">YOUR SUCCESS</span>
+            </FadeIn>
           </div>
           <div className="our-success-row">
-            <span className="success-text">OUR SUCCESS</span>
+            <FadeIn direction="right" delayMs={220}>
+              <span className="success-text">OUR SUCCESS</span>
+            </FadeIn>
           </div>
         </div>
         <SuccessDots />

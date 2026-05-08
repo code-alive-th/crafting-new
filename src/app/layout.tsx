@@ -37,6 +37,33 @@ const fcMinimal = localFont({
   preload: false,
 });
 
+const lineSeedSansTH = localFont({
+  src: [
+    {
+      path: "../../public/fonts/LINE_Seed_Sans_TH/LINESeedSansTH_W_Rg.woff2",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/LINE_Seed_Sans_TH/LINESeedSansTH_W_He.woff2",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/LINE_Seed_Sans_TH/LINESeedSansTH_W_Bd.woff2",
+      weight: "700",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/LINE_Seed_Sans_TH/LINESeedSansTH_W_XBd.woff2",
+      weight: "800",
+      style: "normal",
+    },
+  ],
+  variable: "--font-line-seed-th",
+  preload: false,
+});
+
 const pbio = localFont({
   src: "../../public/fonts/pbio.ttf",
   variable: "--font-pbio",
@@ -61,7 +88,7 @@ export default function RootLayout({
   return (
     <html lang="en" data-scroll-behavior="smooth" suppressHydrationWarning>
       <body
-        className={`${outfit.variable} ${syncopate.variable} ${fcMinimal.variable} ${pbio.variable} antialiased`}
+        className={`${outfit.variable} ${syncopate.variable} ${fcMinimal.variable} ${lineSeedSansTH.variable} ${pbio.variable} antialiased`}
       >
         <SpeedInsights />
         <Analytics />
