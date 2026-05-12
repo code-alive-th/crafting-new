@@ -124,6 +124,8 @@ export default function ContactPage() {
   });
   const [errors, setErrors] = useState<FormErrors>({});
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
 
   const handleChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -131,6 +133,7 @@ export default function ContactPage() {
       const newValue =
         type === "checkbox" ? (e.target as HTMLInputElement).checked : value;
       setForm((prev) => ({ ...prev, [name]: newValue }));
+      setSubmitError("");
       // clear error on change
       if (name in errors) {
         setErrors((prev) => {
@@ -144,14 +147,36 @@ export default function ContactPage() {
   );
 
   const handleSubmit = useCallback(
-    (e: React.FormEvent) => {
+    async (e: React.FormEvent) => {
       e.preventDefault();
       const validationErrors = validate(form);
       if (Object.keys(validationErrors).length > 0) {
         setErrors(validationErrors);
         return;
       }
-      setSubmitted(true);
+
+      setIsSubmitting(true);
+      setSubmitError("");
+
+      try {
+        const response = await fetch("/api/contact", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(form),
+        });
+
+        if (!response.ok) {
+          throw new Error("Contact form submission failed.");
+        }
+
+        setSubmitted(true);
+      } catch {
+        setSubmitError(
+          "Sorry, we couldn't send your message. Please email us directly at craftinglab.co@gmail.com.",
+        );
+      } finally {
+        setIsSubmitting(false);
+      }
     },
     [form]
   );
@@ -367,13 +392,19 @@ export default function ContactPage() {
                   </label>
                 </div>
 
+                {submitError && (
+                  <span className="cp-error" role="alert">
+                    {submitError}
+                  </span>
+                )}
+
                 <button
                   type="submit"
                   className="cp-submit"
-                  disabled={!form.consent}
-                  aria-disabled={!form.consent}
+                  disabled={!form.consent || isSubmitting}
+                  aria-disabled={!form.consent || isSubmitting}
                 >
-                  Submit
+                  {isSubmitting ? "Sending..." : "Submit"}
                 </button>
               </form>
             )}

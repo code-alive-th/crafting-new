@@ -119,3 +119,6 @@
 - Added `loading="eager"` and `fetchPriority="high"` to the `/assets/athlete-banner.webp` background `Image` in `src/components/home/Works.tsx` after Lighthouse detected it as LCP.
 - Made services subcard top labels such as `RESEARCH`, `CONSULTING`, and `FINAL KPI` bold by matching `.sp-subcard-title-top` to the bottom label font weight.
 - Replaced FC Minimal usage with LINE Seed Sans TH: removed the FC Minimal font registration/class from `src/app/layout.tsx`, mapped `--font-fc-minimal` to `--font-line-seed-th` for compatibility, and updated services subcard line text to use LINE directly.
+- Wired the contact form to real email delivery via `src/app/api/contact/route.ts`, using the Resend REST API with `RESEND_API_KEY`, `CONTACT_TO_EMAIL`, and `CONTACT_FROM_EMAIL`; `ContactPage` now POSTs to `/api/contact` with loading and failure states instead of marking success locally.
+- Tested contact email delivery with `.env.local`; fixed `CONTACT_FROM_EMAIL` quoting for shell compatibility, then Resend returned `403 validation_error` because the `craftinglab.co` sending domain is not verified in Resend yet.
+- Retested after the Resend API key/domain update on 2026-05-12: direct Resend API returned `200` with an email id, and local `POST /api/contact` returned `200 {"ok":true}` using `.env.local`.
