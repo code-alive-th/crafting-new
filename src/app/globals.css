@@ -1534,6 +1534,21 @@ footer[id] {
     background: #0f0f0f;
 }
 
+.wk-vp-production-card {
+    max-width: 100%;
+    border-radius: 16px;
+    background: #0f0f0f;
+}
+
+.wk-vp-production-card .production-video-stage {
+    border-radius: inherit;
+    overflow: hidden;
+}
+
+.wk-vp-production-card .production-video {
+    display: block;
+}
+
 .wk-vp-poster-layer {
     position: absolute;
     inset: 0;

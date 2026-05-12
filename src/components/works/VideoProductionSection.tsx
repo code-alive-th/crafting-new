@@ -4,23 +4,96 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import type { Swiper as SwiperType } from "swiper";
 import FadeIn from "../FadeIn";
-import { VIDEO_CATEGORIES, PRODUCTION_VIDEOS } from "./data";
+import { VIDEO_CATEGORIES, PRODUCTION_VIDEOS, type VideoItem } from "./data";
 import WorksArrow from "./WorksArrow";
+
+type Gsap = typeof import("gsap").gsap;
 
 const VIDEOS_PER_PAGE = 3;
 
-const buildPlayableSrc = (src: string) => {
-  const separator = src.includes("?") ? "&" : "?";
+function VideoProductionCard({
+  video,
+  eager = false,
+}: {
+  video: VideoItem;
+  eager?: boolean;
+}) {
+  const [isLoading, setIsLoading] = useState(true);
+  const cardRef = useRef<HTMLDivElement>(null);
+  const gsapRef = useRef<Gsap | null>(null);
 
-  return `${src}${separator}autoplay=0&mute=1`;
-};
+  useEffect(() => {
+    setIsLoading(true);
+  }, [video.id, video.src]);
+
+  useEffect(() => {
+    let cancelled = false;
+    const card = cardRef.current;
+    if (!card) return;
+
+    void import("gsap").then(({ gsap }) => {
+      if (cancelled) return;
+      gsapRef.current = gsap;
+      gsap.killTweensOf(card);
+      gsap.fromTo(
+        card,
+        {
+          opacity: 0.4,
+          y: 24,
+          scale: 0.975,
+          filter: "blur(10px) saturate(0.8)",
+        },
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          filter: "blur(0px) saturate(1)",
+          duration: 0.7,
+          ease: "power3.out",
+        },
+      );
+    });
+
+    return () => {
+      cancelled = true;
+      gsapRef.current?.killTweensOf(card);
+    };
+  }, [video.id]);
+
+  return (
+    <div className="wk-vp-page-card">
+      <div ref={cardRef} className="production-video-card wk-vp-production-card">
+        <div className="production-video-stage">
+          <div className="production-video-poster" aria-hidden="true">
+            <Image
+              src={video.thumbnail}
+              alt=""
+              fill
+              loading={eager ? "eager" : "lazy"}
+              fetchPriority={eager ? "high" : "auto"}
+              sizes="(max-width: 768px) calc(100vw - 40px), 318px"
+              style={{ objectFit: "cover" }}
+            />
+          </div>
+          <iframe
+            className={`production-video ${isLoading ? "is-loading" : "is-ready"}`}
+            src={video.src}
+            title={video.alt}
+            loading={eager ? "eager" : "lazy"}
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+            referrerPolicy="strict-origin-when-cross-origin"
+            onLoad={() => setIsLoading(false)}
+          />
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export default function VideoProductionSection() {
   const [videoCat, setVideoCat] = useState(VIDEO_CATEGORIES[0]);
   const [pageIndex, setPageIndex] = useState(0);
-  const [loadedVideoMap, setLoadedVideoMap] = useState<Record<string, boolean>>(
-    {},
-  );
   const swiperRef = useRef<SwiperType | null>(null);
 
   const filteredVideos = useMemo(
@@ -106,57 +179,13 @@ export default function VideoProductionSection() {
               {videoPages.map((page, index) => (
                 <SwiperSlide key={`video-page-${index}`}>
                   <div className={`wk-vp-page wk-vp-page--${page.length}`}>
-                    {page.map((video) => {
-                      const isLoaded = loadedVideoMap[video.id] === true;
-
-                      return (
-                        <div key={video.id} className="wk-vp-page-card">
-                          <div className="wk-vp-card-viewport">
-                            <div
-                              className={`wk-vp-poster-layer ${isLoaded ? "is-hidden" : ""}`}
-                              aria-hidden="true"
-                            >
-                              <Image
-                                src={video.thumbnail}
-                                alt=""
-                                fill
-                                sizes="(max-width: 768px) calc(100vw - 40px), 318px"
-                                className="wk-vp-poster-image"
-                              />
-                              <div
-                                className="wk-vp-poster-overlay"
-                                aria-hidden="true"
-                              />
-                              <div
-                                className="wk-vp-loading-overlay"
-                                aria-hidden="true"
-                              >
-                                <span className="wk-vp-loading-spinner" />
-                              </div>
-                            </div>
-                            <iframe
-                              className={`wk-vp-player ${isLoaded ? "is-ready" : "is-loading"}`}
-                              src={buildPlayableSrc(video.src)}
-                              title={video.alt}
-                              loading="lazy"
-                              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                              allowFullScreen
-                              referrerPolicy="strict-origin-when-cross-origin"
-                              onLoad={() => {
-                                setLoadedVideoMap((current) => {
-                                  if (current[video.id]) return current;
-
-                                  return {
-                                    ...current,
-                                    [video.id]: true,
-                                  };
-                                });
-                              }}
-                            />
-                          </div>
-                        </div>
-                      );
-                    })}
+                    {page.map((video, videoIndex) => (
+                      <VideoProductionCard
+                        key={video.id}
+                        video={video}
+                        eager={index === pageIndex && videoIndex === 0}
+                      />
+                    ))}
                   </div>
                 </SwiperSlide>
               ))}
