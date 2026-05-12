@@ -30,7 +30,13 @@ const SHOWCASES: ShowcaseItem[] = [
   },
 ];
 
-function ShowcaseCard({ item }: { item: ShowcaseItem }) {
+function ShowcaseCard({
+  item,
+  priority = false,
+}: {
+  item: ShowcaseItem;
+  priority?: boolean;
+}) {
   const hasDetail = WORK_DETAILS.some((w) => w.id === item.id);
 
   const inner = (
@@ -41,6 +47,9 @@ function ShowcaseCard({ item }: { item: ShowcaseItem }) {
         fill
         className="object-cover"
         sizes="(max-width: 768px) 100vw, 33vw"
+        priority={priority}
+        loading={priority ? "eager" : "lazy"}
+        fetchPriority={priority ? "high" : "auto"}
       />
       <div className="wk-showcase-label">
         <p className="wk-showcase-name">{item.name}</p>
@@ -88,8 +97,8 @@ export default function ShowcasesSection() {
       <div className="wk-showcases-wrapper">
         {/* Desktop: show all 3 */}
         <div className="wk-showcases wk-showcases--desktop">
-          {SHOWCASES.map((item) => (
-            <ShowcaseCard key={item.id} item={item} />
+          {SHOWCASES.map((item, index) => (
+            <ShowcaseCard key={item.id} item={item} priority={index === 0} />
           ))}
         </div>
 
@@ -99,8 +108,8 @@ export default function ShowcasesSection() {
             className="wk-showcases-track"
             style={{ transform: `translateX(calc(-${active} * 100%))` }}
           >
-            {SHOWCASES.map((item) => (
-              <ShowcaseCard key={item.id} item={item} />
+            {SHOWCASES.map((item, index) => (
+              <ShowcaseCard key={item.id} item={item} priority={index === 0} />
             ))}
           </div>
 

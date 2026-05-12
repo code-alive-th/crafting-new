@@ -49,7 +49,8 @@ export default function ServiceBlock({ svc, index }: ServiceBlockProps) {
               width={svc.photo.width}
               height={svc.photo.height}
               priority={index === 0}
-              loading="eager"
+              loading={index === 0 ? "eager" : "lazy"}
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) calc(100vw - 80px), 1086px"
               style={{ width: "100%", height: "auto", display: "block" }}
             />
           </div>
@@ -80,6 +81,7 @@ export default function ServiceBlock({ svc, index }: ServiceBlockProps) {
                   alt={card.photo.alt}
                   width={card.photo.width}
                   height={card.photo.height}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) calc(100vw - 80px), 650px"
                   style={{
                     width: "100%",
                     height: "auto",
