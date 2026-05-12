@@ -91,12 +91,8 @@ export default function GraphicDesignSection() {
       </div>
 
       <div ref={gridRef} className="wk-gd-grid">
-        {GRAPHIC_DESIGN_ITEMS.map((item) => (
-          <Link
-            key={item.id}
-            href={detailIds.has(item.id) ? `/works/${item.id}` : "#"}
-            className="wk-gd-card"
-          >
+        {GRAPHIC_DESIGN_ITEMS.map((item) => {
+          const cardInner = (
             <div className="wk-gd-card-inner">
               <Image
                 src={item.image}
@@ -115,8 +111,22 @@ export default function GraphicDesignSection() {
                 unoptimized
               />
             </div>
-          </Link>
-        ))}
+          );
+
+          if (!detailIds.has(item.id)) {
+            return (
+              <div key={item.id} className="wk-gd-card wk-gd-card--disabled">
+                {cardInner}
+              </div>
+            );
+          }
+
+          return (
+            <Link key={item.id} href={`/works/${item.id}`} className="wk-gd-card">
+              {cardInner}
+            </Link>
+          );
+        })}
       </div>
     </section>
   );

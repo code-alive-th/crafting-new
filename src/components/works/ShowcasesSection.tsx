@@ -65,11 +65,7 @@ function ShowcaseCard({
     );
   }
 
-  return (
-    <a href="#" className="wk-showcase-card">
-      {inner}
-    </a>
-  );
+  return <div className="wk-showcase-card wk-showcase-card--disabled">{inner}</div>;
 }
 
 export default function ShowcasesSection() {

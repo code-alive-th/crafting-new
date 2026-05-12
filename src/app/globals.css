@@ -1002,6 +1002,10 @@ footer[id] {
     transform: translateY(-20px);
 }
 
+.wk-showcase-card--disabled {
+    cursor: default;
+}
+
 /* hover overlay */
 .wk-showcase-card::after {
     content: "";
@@ -1872,6 +1876,10 @@ footer[id] {
 
 .wk-gd-card:hover .wk-gd-card-name {
     color: var(--green);
+}
+
+.wk-gd-card--disabled {
+    cursor: default;
 }
 
 /* ----- WORKS SECTION (legacy — kept for production section) ----- */
