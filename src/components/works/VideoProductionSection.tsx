@@ -14,17 +14,23 @@ const VIDEOS_PER_PAGE = 3;
 function VideoProductionCard({
   video,
   eager = false,
+  isPageActive = false,
 }: {
   video: VideoItem;
   eager?: boolean;
+  isPageActive?: boolean;
 }) {
   const [isLoading, setIsLoading] = useState(true);
+  const [isActivated, setIsActivated] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
   const gsapRef = useRef<Gsap | null>(null);
 
   useEffect(() => {
     setIsLoading(true);
+    setIsActivated(false);
   }, [video.id, video.src]);
+
+  const playableSrc = `${video.src}${video.src.includes("?") ? "&" : "?"}autoplay=1`;
 
   useEffect(() => {
     let cancelled = false;
@@ -75,16 +81,33 @@ function VideoProductionCard({
               style={{ objectFit: "cover" }}
             />
           </div>
-          <iframe
-            className={`production-video ${isLoading ? "is-loading" : "is-ready"}`}
-            src={video.src}
-            title={video.alt}
-            loading={eager ? "eager" : "lazy"}
-            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-            referrerPolicy="strict-origin-when-cross-origin"
-            onLoad={() => setIsLoading(false)}
-          />
+          {!isActivated && (
+            <button
+              className="wk-vp-play-button swiper-no-swiping"
+              type="button"
+              aria-label={`Play ${video.alt}`}
+              onPointerDown={(event) => event.stopPropagation()}
+              onClick={(event) => {
+                event.stopPropagation();
+                setIsActivated(true);
+              }}
+            >
+              <span className="wk-vp-play-icon" aria-hidden="true" />
+              <span className="wk-vp-play-text">Play</span>
+            </button>
+          )}
+          {isPageActive && isActivated && (
+            <iframe
+              className={`production-video swiper-no-swiping ${isLoading ? "is-loading" : "is-ready"}`}
+              src={playableSrc}
+              title={video.alt}
+              loading={eager ? "eager" : "lazy"}
+              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              referrerPolicy="strict-origin-when-cross-origin"
+              onLoad={() => setIsLoading(false)}
+            />
+          )}
         </div>
       </div>
     </div>
@@ -94,6 +117,7 @@ function VideoProductionCard({
 export default function VideoProductionSection() {
   const [videoCat, setVideoCat] = useState(VIDEO_CATEGORIES[0]);
   const [pageIndex, setPageIndex] = useState(0);
+  const [videosPerPage, setVideosPerPage] = useState(VIDEOS_PER_PAGE);
   const swiperRef = useRef<SwiperType | null>(null);
 
   const filteredVideos = useMemo(
@@ -110,18 +134,32 @@ export default function VideoProductionSection() {
     for (
       let index = 0;
       index < filteredVideos.length;
-      index += VIDEOS_PER_PAGE
+      index += videosPerPage
     ) {
-      pages.push(filteredVideos.slice(index, index + VIDEOS_PER_PAGE));
+      pages.push(filteredVideos.slice(index, index + videosPerPage));
     }
 
     return pages;
-  }, [filteredVideos]);
+  }, [filteredVideos, videosPerPage]);
 
   const totalPages = videoPages.length;
+
   useEffect(() => {
+    const query = window.matchMedia("(max-width: 768px)");
+    const updateVideosPerPage = () => {
+      setVideosPerPage(query.matches ? 1 : VIDEOS_PER_PAGE);
+    };
+
+    updateVideosPerPage();
+    query.addEventListener("change", updateVideosPerPage);
+
+    return () => query.removeEventListener("change", updateVideosPerPage);
+  }, []);
+
+  useEffect(() => {
+    setPageIndex(0);
     swiperRef.current?.slideTo(0, 0);
-  }, [videoCat]);
+  }, [videoCat, videosPerPage]);
 
   const handlePrevPage = () => {
     swiperRef.current?.slidePrev();
@@ -169,6 +207,12 @@ export default function VideoProductionSection() {
               spaceBetween={0}
               speed={550}
               rewind={totalPages > 1}
+              threshold={8}
+              touchStartPreventDefault={false}
+              preventClicks={false}
+              preventClicksPropagation={false}
+              noSwipingSelector=".swiper-no-swiping"
+              simulateTouch
               onSwiper={(swiper) => {
                 swiperRef.current = swiper;
               }}
@@ -184,6 +228,7 @@ export default function VideoProductionSection() {
                         key={video.id}
                         video={video}
                         eager={index === pageIndex && videoIndex === 0}
+                        isPageActive={index === pageIndex}
                       />
                     ))}
                   </div>

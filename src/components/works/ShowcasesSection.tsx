@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import FadeIn from "../FadeIn";
 import WorksArrow from "./WorksArrow";
 import { WORK_DETAILS } from "./data";
@@ -48,8 +48,8 @@ function ShowcaseCard({
         className="object-cover"
         sizes="(max-width: 768px) 100vw, 33vw"
         priority={priority}
-        loading={priority ? "eager" : "lazy"}
-        fetchPriority={priority ? "high" : "auto"}
+        loading="eager"
+        fetchPriority="high"
       />
       <div className="wk-showcase-label">
         <p className="wk-showcase-name">{item.name}</p>
@@ -74,10 +74,28 @@ function ShowcaseCard({
 
 export default function ShowcasesSection() {
   const [active, setActive] = useState(0);
+  const viewportRef = useRef<HTMLDivElement>(null);
   const total = SHOWCASES.length;
 
-  const prev = () => setActive((i) => (i - 1 + total) % total);
-  const next = () => setActive((i) => (i + 1) % total);
+  const goTo = (index: number) => {
+    const nextIndex = Math.max(0, Math.min(total - 1, index));
+    setActive(nextIndex);
+    viewportRef.current?.scrollTo({
+      left: nextIndex * viewportRef.current.clientWidth,
+      behavior: "smooth",
+    });
+  };
+
+  const prev = () => goTo(active - 1);
+  const next = () => goTo(active + 1);
+
+  const handleScroll = () => {
+    const viewport = viewportRef.current;
+    if (!viewport) return;
+
+    const nextIndex = Math.round(viewport.scrollLeft / viewport.clientWidth);
+    setActive(Math.max(0, Math.min(total - 1, nextIndex)));
+  };
 
   return (
     <section className="wk-section" id="works">
@@ -97,20 +115,23 @@ export default function ShowcasesSection() {
       <div className="wk-showcases-wrapper">
         {/* Desktop: show all 3 */}
         <div className="wk-showcases wk-showcases--desktop">
-          {SHOWCASES.map((item, index) => (
-            <ShowcaseCard key={item.id} item={item} priority={index === 0} />
+          {SHOWCASES.map((item) => (
+            <ShowcaseCard key={item.id} item={item} priority />
           ))}
         </div>
 
         {/* Mobile: carousel */}
         <div className="wk-showcases wk-showcases--mobile">
           <div
-            className="wk-showcases-track"
-            style={{ transform: `translateX(calc(-${active} * 100%))` }}
+            ref={viewportRef}
+            className="wk-showcases-viewport"
+            onScroll={handleScroll}
           >
-            {SHOWCASES.map((item, index) => (
-              <ShowcaseCard key={item.id} item={item} priority={index === 0} />
-            ))}
+            <div className="wk-showcases-track">
+              {SHOWCASES.map((item) => (
+                <ShowcaseCard key={item.id} item={item} priority />
+              ))}
+            </div>
           </div>
 
           {/* Nav buttons */}
@@ -135,7 +156,7 @@ export default function ShowcasesSection() {
               <button
                 key={i}
                 className={`wk-sc-dot${i === active ? " wk-sc-dot--active" : ""}`}
-                onClick={() => setActive(i)}
+                onClick={() => goTo(i)}
                 aria-label={`Go to showcase ${i + 1}`}
               />
             ))}
