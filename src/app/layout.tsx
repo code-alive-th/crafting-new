@@ -56,14 +56,14 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://www.craftinglab.co"),
   title: "CRAFTING LAB - Race Your Life, Lead Your Brand Forward",
   description:
-    "CRAFTING LAB - Online marketing services by experienced professionals. Build strong brands through creative content and data analytics.",
+    "Digital marketing agency in Chiang Mai specializing in brand strategy, content marketing, and video production for businesses in Thailand.",
   icons: {
     icon: "/assets/brand/logo-icon.svg",
   },
   openGraph: {
     title: "CRAFTING LAB - Race Your Life, Lead Your Brand Forward",
     description:
-      "Online marketing services by experienced professionals. Build strong brands through creative content and data analytics.",
+      "Chiang Mai's digital marketing experts offering brand strategy, content creation, and video production services for businesses.",
     url: "https://www.craftinglab.co",
     siteName: "CRAFTING LAB",
     images: [
@@ -83,7 +83,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "CRAFTING LAB - Race Your Life, Lead Your Brand Forward",
     description:
-      "Online marketing services by experienced professionals. Build strong brands through creative content and data analytics.",
+      "Chiang Mai's digital marketing experts offering brand strategy, content creation, and video production services for businesses.",
     images: ["/assets/brand/og-image.webp"],
   },
 };

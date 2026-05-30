@@ -6,7 +6,7 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Our Works | Crafting Lab",
   description:
-    "Portfolio of Crafting Lab — Graphic Design, Video Production, and Photography showcase.",
+    "Portfolio of Crafting Lab — Brand strategy, graphic design, video production, and photography showcase for businesses in Thailand.",
 };
 
 export default function Works() {

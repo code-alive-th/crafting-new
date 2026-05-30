@@ -7,7 +7,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Our Services — CRAFTING LAB",
   description:
-    "We provide online marketing services including strategy, branding, design, and video production by a team of experienced professionals.",
+    "Chiang Mai's digital marketing experts offering brand strategy, content creation, social media marketing, and video production services.",
 };
 
 export default function Services() {

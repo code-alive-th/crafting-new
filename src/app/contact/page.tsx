@@ -7,7 +7,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Contact Us — CRAFTING LAB",
   description:
-    "Contact CRAFTING LAB for questions about development, partnerships, and upcoming events. Reach us via phone, email, or our contact form.",
+    "Contact CRAFTING LAB in Chiang Mai for digital marketing, branding, and video production services. Reach us via phone, email, or our contact form.",
 };
 
 export default function Contact() {
