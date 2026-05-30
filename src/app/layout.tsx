@@ -53,11 +53,38 @@ const pbio = localFont({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.craftinglab.co"),
   title: "CRAFTING LAB - Race Your Life, Lead Your Brand Forward",
   description:
     "CRAFTING LAB - We provide online marketing services by a team of experienced people. Build a strong brand in the online business world through creative content and data analytics.",
   icons: {
     icon: "/assets/brand/logo-icon.svg",
+  },
+  openGraph: {
+    title: "CRAFTING LAB - Race Your Life, Lead Your Brand Forward",
+    description:
+      "We provide online marketing services by a team of experienced people. Build a strong brand in the online business world through creative content and data analytics.",
+    url: "https://www.craftinglab.co",
+    siteName: "CRAFTING LAB",
+    images: [
+      {
+        url: "/assets/brand/og-image.webp",
+        width: 1200,
+        height: 630,
+        alt: "CRAFTING LAB - Digital Marketing Agency",
+        type: "image/webp",
+      },
+    ],
+    locale: "th_TH",
+    alternateLocale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "CRAFTING LAB - Race Your Life, Lead Your Brand Forward",
+    description:
+      "We provide online marketing services by a team of experienced people. Build a strong brand in the online business world through creative content and data analytics.",
+    images: ["/assets/brand/og-image.webp"],
   },
 };
 
