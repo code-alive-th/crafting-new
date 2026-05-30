@@ -8,6 +8,9 @@ export const metadata: Metadata = {
   title: "Our Services — CRAFTING LAB",
   description:
     "Chiang Mai's digital marketing experts offering brand strategy, content creation, social media marketing, and video production services.",
+  alternates: {
+    canonical: "/services",
+  },
 };
 
 export default function Services() {

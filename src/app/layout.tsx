@@ -60,6 +60,20 @@ export const metadata: Metadata = {
   icons: {
     icon: "/assets/brand/logo-icon.svg",
   },
+  alternates: {
+    canonical: "/",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
   openGraph: {
     title: "CRAFTING LAB - Race Your Life, Lead Your Brand Forward",
     description:
@@ -68,11 +82,11 @@ export const metadata: Metadata = {
     siteName: "CRAFTING LAB",
     images: [
       {
-        url: "/assets/brand/og-image.webp",
+        url: "/assets/brand/og-image.jpg",
         width: 1200,
         height: 630,
         alt: "CRAFTING LAB - Digital Marketing Agency",
-        type: "image/webp",
+        type: "image/jpeg",
       },
     ],
     locale: "th_TH",
@@ -84,7 +98,7 @@ export const metadata: Metadata = {
     title: "CRAFTING LAB - Race Your Life, Lead Your Brand Forward",
     description:
       "Chiang Mai's digital marketing experts offering brand strategy, content creation, and video production services for businesses.",
-    images: ["/assets/brand/og-image.webp"],
+    images: ["/assets/brand/og-image.jpg"],
   },
 };
 

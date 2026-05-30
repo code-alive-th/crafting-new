@@ -20,6 +20,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `${work.client} — Works | CRAFTING LAB`,
     description: `${work.client} — ${work.details.replace(/\n/g, " ")}. Digital marketing case study by CRAFTING LAB in Chiang Mai, Thailand.`,
+    alternates: {
+      canonical: `/works/${work.id}`,
+    },
   };
 }
 
